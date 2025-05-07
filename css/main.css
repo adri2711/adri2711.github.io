@@ -105,20 +105,22 @@ div.cards {
 }
 
 div.card {
-    padding: 1em;
+    padding: 0.5em;
     margin: 1em;
     background-color: white;
     border-radius: 1em;
     position: relative;
     overflow: hidden;
     display: flex;
+    text-align: center;
     align-items: center;
-    width: calc(50% - 4em);
+    width: calc(50% - 3em);
     height: 17.5em;
     background-size: 100%;
     font-family: 'Moolbor', 'Georgia', serif;
     font-stretch: 90%;
     text-shadow: 0 0 0.52vw #fff, 0 0 1.04vw #fff, 0 0 30px #e60073;
+    word-spacing: 1em;
 }
 
 div.blur {
@@ -138,6 +140,7 @@ div.card>h2 {
     font-size: 6em;
     color: white;
     transform: scale(.7, 1);
+    width: 100%;
 }
 
 div.card>h2+img {
