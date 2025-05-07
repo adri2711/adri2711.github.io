@@ -1,6 +1,89 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="refresh" content="0; url=https://asometric.artstation.com/" />
+        <title>Asometric - Portfolio</title>
+        <link rel="icon" type="image/png" href="images/favicon.png"/>
+
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Splide -->
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/themes/splide-sea-green.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+        <!-- Our own stuff -->
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
+    <body>
+        <div class="topbar">
+            <img src="images/portrait.png" alt="Adrià Pérez Garrofé">
+            <div class="name">
+                <h1>Adrià Pérez Garrofé</h1>
+                <h3>Game and Level Designer</h3>
+            </div>
+            <div class="contact-list">
+                <div class="contact">
+                    <span class="material-icons">&#xE158;</span>
+                    <a href="mailto:asometricgames@gmail.com">asometricgames@gmail.com</a>
+                </div>
+                <div class="contact">
+                    <span class="material-icons">&#xe7fd;</span>
+                    <a href="https://www.linkedin.com/in/adria-perez-garrofe">linkedin.com/in/adria-perez-garrofe</a>
+                </div>
+                <div class="contact">
+                    <span><img src="images/crow.svg" style="height: 1.5em;"></span>
+                    <a href="https://www.crowdford.com">crowdford.com</a>
+                </div>
+                <div class="contact">
+                    <span class="material-icons">&#xe3ae;</span>
+                    <a href="https://asometric.artstation.com">asometric.artstation.com</a>
+                </div>
+                <div class="contact">
+                    <span><img src="images/bsky.svg" style="height: 1.5em;"></span>
+                    <a href="https://bsky.app/profile/asometric.cat">asometric.cat</a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <section class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide"><img src="images/bitfield/adri-image-2024-01-26-031946762.jpg"></li>
+                        <li class="splide__slide"><img src="images/bitstream/adri-image-2024-01-26-025642692.jpg"></li>
+                        <li class="splide__slide"><img src="images/claroscuro/adri-image-2024-01-26-030014174.jpg"></li>
+                        <li class="splide__slide"><img src="images/conjuring/adri-2024-01-26-04-25-04.jpg"></li>
+                        <li class="splide__slide"><img src="images/crimson/adri-image-2024-01-26-024546525.jpg"></li>
+                        <li class="splide__slide"><img src="images/ctw/2024-03-20_23.02.48.png"></li>
+                    </ul>
+                </div>
+            </section>
+            <div class="cards">
+                <div class="card" style="background-image: url('images/crimson/adri-image-2024-01-26-024546525.jpg'); background-position: 0 -3em;">
+                    <div class="blur"></div>
+                    <h2>Marketing</h2>
+                </div>
+                <div class="card">
+                    <h2>Tock and Call Borture!</h2>
+                </div>
+                <div class="card">
+                    <h2>Tock and Call Borture!</h2>
+                </div>
+                <div class="card">
+                    <h2>Tock and Call Borture!</h2>
+                </div>
+                <div class="card">
+                    <h2>Tock and Call Borture!</h2>
+                </div>
+                <div class="card">
+                    <h2>Tock and Call Borture!</h2>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
