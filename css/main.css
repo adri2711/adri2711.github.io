@@ -170,10 +170,6 @@ div.card {
     align-content: center;
     width: calc(50% - 2em);
     height: 17.5em;
-
-    font-family: 'Moolbor', 'Georgia', serif;
-    word-spacing: 1em;
-    text-shadow: 0 0 0.52vw white, 0 0 1.04vw white, 0 0 30px #e60073;
     
     background-size: 100%;
     background-position-y: var(--bg-offset);
@@ -201,11 +197,16 @@ div.blur {
 }
 
 div.card>h2 {
-    padding-top: 0.5em;
-    font-size: 6em;
     color: white;
+    font-family: 'Moolbor', 'Georgia', serif;
+    word-spacing: 0.15em;
+    font-size: 6em;
     transform: scale(0.7, 1) translateX(-20%);
+    text-shadow: 0 0 0.52vw white, 0 0 1.04vw white, 0 0 30px #e60073;
+
+    padding-top: 0.5em;
     width: 140%;
+    user-select: none;
 }
 
 div.card>h2+img {
@@ -290,7 +291,12 @@ div.card:hover>video {
 
 @media only screen and (max-width: 1200px) {
     div.card {
-        width: calc(100% - 4em);
+        width: calc(100% - 2em);
+    }
+
+    div.card:hover {
+        margin: 0.7em;
+        width: calc(100% - 1.4em);
     }
 
     div.topbar>.name {
