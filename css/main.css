@@ -9,6 +9,7 @@
     --band-color: rgb(19, 57, 134);
     --text-color: white;
     --scroll-top-radius: 0.25em;
+    background: linear-gradient(rgb(41, 7, 40), rgb(37, 81, 106));
 }
 
 img.svg {
@@ -16,7 +17,6 @@ img.svg {
 }
 
 body {
-    background: linear-gradient(rgb(41, 7, 40), rgb(37, 81, 106));
     margin: 0.416vw;
     margin-top: 0;
 
@@ -186,8 +186,12 @@ div.card:hover {
     height: 18.1em;
 }
 
+div.card.selected {
+    width: calc(100% - 1.4em);
+}
+
 div.blur {
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
     
     position: absolute;
     top: 0;

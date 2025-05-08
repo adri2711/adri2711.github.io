@@ -14,8 +14,24 @@ function mountSplide() {
     ).mount(window.splide.Extensions);
 }
 
+function attackClickHandler() {
+    document.querySelectorAll('div.card').forEach(card => card.addEventListener('mousedown', (evt) => {
+        const style = window.getComputedStyle(card);
+        const fontsize = parseFloat(style.fontSize);
+        
+        document.querySelectorAll('div.card.selected').forEach(card => card.classList.remove('selected'));
+        card.classList.add('selected');
+        
+        clearScrollTop();
+
+        setTimeout(() => {
+            lenis.scrollTo(lenis.animatedScroll + card.getBoundingClientRect().top - 10 * fontsize);
+        }, 320);
+    }));
+}
+
 function attachOpacityHandler() {
-    document.querySelectorAll('div.card>video').forEach(video => video.addEventListener("transitionstart", (evt) => {
+    document.querySelectorAll('div.card>video').forEach(video => video.addEventListener('transitionstart', (evt) => {
         if(evt.propertyName !== 'opacity') return;
 
         const style = window.getComputedStyle(video);
@@ -47,6 +63,7 @@ function onLoadFinished() {
     mountSplide();
     attachResizeHandler();
     attachOpacityHandler();
+    attackClickHandler();
 }
 
 document.addEventListener('DOMContentLoaded', onLoadFinished);
@@ -62,19 +79,22 @@ function lenisFrame(time) {
 
 let scrollTop = true;
 lenis.on('scroll', () => {
-    if(scrollTop && lenis.animatedScroll > 15) {
-        document.querySelector('.topbar').classList.add('scrolled');
-        document.querySelector('.content').classList.add('scrolled');
-        root.style.setProperty('--scroll-top-radius', '0.25em');
-        scrollTop = false;
-    }
-
-    if(!scrollTop && lenis.animatedScroll <= 15) {
-        document.querySelector('.topbar').classList.remove('scrolled');
-        document.querySelector('.content').classList.remove('scrolled');
-        root.style.setProperty('--scroll-top-radius', '0');
-        scrollTop = true;
-    }
+    if(scrollTop && lenis.animatedScroll > 15) clearScrollTop();
+    if(!scrollTop && lenis.animatedScroll <= 15) setScrollTop();
 });
+
+function setScrollTop() {
+    document.querySelector('.topbar').classList.remove('scrolled');
+    document.querySelector('.content').classList.remove('scrolled');
+    root.style.setProperty('--scroll-top-radius', '0');
+    scrollTop = true;
+}
+
+function clearScrollTop() {
+    document.querySelector('.topbar').classList.add('scrolled');
+    document.querySelector('.content').classList.add('scrolled');
+    root.style.setProperty('--scroll-top-radius', '0.25em');
+    scrollTop = false;
+}
 
 requestAnimationFrame(lenisFrame);
