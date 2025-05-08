@@ -23,6 +23,10 @@
         <script src="js/main.js"></script>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/webgl.js" defer=true></script>
+        <script src="shaders/bg.fsh" id="shader-fragment" type="x-shader/x-fragment"></script>
+        <script src="shaders/bg.vsh" id="shader-vertex" type="x-shader/x-vertex"></script>
     </head>
     <body>
         <div class="topbar">
@@ -38,7 +42,7 @@
                 </div>
                 <div class="contact">
                     <span class="material-icons">&#xe7fd;</span>
-                    <a href="https://www.linkedin.com/in/adria-perez-garrofe">linkedin.com/in/adria-perez-garrofe</a>
+                    <a href="https://www.linkedin.com/in/4dri">linkedin.com/in/4dri</a>
                 </div>
                 <div class="contact">
                     <span><img class="svg" src="images/crow.svg" style="height: 1.5em;"></span>
@@ -52,6 +56,9 @@
                     <span><img class="svg" src="images/bsky.svg" style="height: 1.5em;"></span>
                     <a href="https://bsky.app/profile/asometric.cat">asometric.cat</a>
                 </div>
+            </div>
+            <div class="bg-canvas">
+                <canvas id="gl-bg-canvas"></canvas>
             </div>
         </div>
         <div class="content">

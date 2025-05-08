@@ -26,7 +26,7 @@ function attackClickHandler() {
 
         setTimeout(() => {
             lenis.scrollTo(lenis.animatedScroll + card.getBoundingClientRect().top - 10 * fontsize);
-        }, 320);
+        }, 300);
     }));
 }
 
