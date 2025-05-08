@@ -12,7 +12,7 @@
     background: linear-gradient(rgb(41, 7, 40) 0%, rgb(37, 81, 106) 100%);
     background-color: rgb(37, 81, 106);
 
-    padding-bottom: 15em; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
+    padding-bottom: 20em; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
 }
 
 img.svg {
