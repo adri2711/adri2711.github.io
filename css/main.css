@@ -8,6 +8,7 @@
     --background-color: #001f4b;
     --band-color: rgb(19, 57, 134);
     --text-color: white;
+    --scroll-top-radius: 0.25em;
 }
 
 img.svg {
@@ -176,13 +177,23 @@ div.card {
     
     background-size: 100%;
     background-position-y: var(--bg-offset);
+
+    transition: all 0.1s;
+
+    cursor: pointer;
+}
+
+div.card:hover {
+    margin: 0.7em;
+
+    width: calc(50% - 1.4em);
+    height: 18.1em;
 }
 
 div.blur {
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(3px);
     
     position: absolute;
-    content: "";
     top: 0;
     bottom: 0;
     left: 0;
@@ -199,6 +210,41 @@ div.card>h2 {
 
 div.card>h2+img {
     margin-left: 2em;
+}
+
+div.card>video {
+    position: absolute;
+    width: 105%;
+    top: 0;
+    left: 0;
+    
+    opacity: 0%;
+    transition: opacity 0.2s;
+}
+
+div.card:hover>video {
+    opacity: 100%;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 0.52vw;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
+    border-top-left-radius: var(--scroll-top-radius);
+    border-top-right-radius: var(--scroll-top-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
 }
 
 
@@ -239,6 +285,8 @@ div.card>h2+img {
 .splide__arrow--prev {
     left: 0.2em;
 }
+
+
 
 @media only screen and (max-width: 1200px) {
     div.card {
