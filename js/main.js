@@ -14,19 +14,36 @@ function mountSplide() {
     ).mount(window.splide.Extensions);
 }
 
-function attackClickHandler() {
+var lockOnto = null;
+var locking = false;
+var fontsize = 0;
+function scrollLock(time) {
+    if(!locking) return;
+
+    lenis.scrollTo(lenis.animatedScroll + lockOnto.getBoundingClientRect().top - 10 * fontsize, {immediate: true});
+
+    requestAnimationFrame(scrollLock);
+}
+
+function attachClickHandler() {
     document.querySelectorAll('div.card').forEach(card => card.addEventListener('mousedown', (evt) => {
         const style = window.getComputedStyle(card);
-        const fontsize = parseFloat(style.fontSize);
+        fontsize = parseFloat(style.fontSize);
         
-        document.querySelectorAll('div.card.selected').forEach(card => card.classList.remove('selected'));
         card.classList.add('selected');
-        
         clearScrollTop();
 
+        lockOnto = card;
+        locking = true;
+        requestAnimationFrame(scrollLock);
+
+        setTimeout(() => card.classList.add('expanded'), 300);
+        
         setTimeout(() => {
-            lenis.scrollTo(lenis.animatedScroll + card.getBoundingClientRect().top - 10 * fontsize);
-        }, 300);
+            Array.from(document.querySelectorAll('div.card.selected')).filter(other => other !== card).forEach(other => other.classList.remove('selected', 'expanded'));
+        }, 500);
+
+        setTimeout(() => locking = false, 600);
     }));
 }
 
@@ -63,7 +80,7 @@ function onLoadFinished() {
     mountSplide();
     attachResizeHandler();
     attachOpacityHandler();
-    attackClickHandler();
+    attachClickHandler();
 }
 
 document.addEventListener('DOMContentLoaded', onLoadFinished);

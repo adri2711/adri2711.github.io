@@ -4,7 +4,7 @@
 }
 
 :root {
-    --border-color: #491275;
+    --border-color: rgb(82, 0, 166);/*#491275;*/
     --background-colorA: rgb(48, 10, 46);
     --background-colorB: rgb(41, 7, 40);
     --band-color: rgb(19, 111, 134);
@@ -19,7 +19,7 @@
     background-color: var(--background-colorA);
     background-size: 72px 72px;
 
-    padding-bottom: 20em; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
+    padding-bottom: 100vh; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
 }
 
 img.svg {
@@ -185,7 +185,7 @@ div.card {
     background-size: 100%;
     background-position-y: var(--bg-offset);
 
-    transition: all 0.1s;
+    transition: none;
 
     cursor: pointer;
 }
@@ -195,11 +195,22 @@ div.card:hover {
 
     width: calc(50% - 1.4em);
     height: 18.1em;
+
+    transition: all 0.1s;
 }
 
 div.card.selected {
     width: calc(100% - 1.4em);
-    height: 50em;
+    height: 100em;
+    background-size: auto 100%;
+    background-position-y: 0;
+    background-position-x: center;
+    
+    transition: all 0.1s;
+}
+
+div.card.expanded {
+    margin: 1em;
 }
 
 div.blur {
@@ -210,6 +221,12 @@ div.blur {
     bottom: 0;
     left: 0;
     right: 0;
+
+    transition: backdrop-filter 0.3s;
+}
+
+div.card.expanded>div.blur {
+    backdrop-filter: blur(20px) brightness(40%);
 }
 
 div.card>h2 {
@@ -217,16 +234,22 @@ div.card>h2 {
     font-family: 'Moolbor', 'Georgia', serif;
     word-spacing: 0.15em;
     font-size: 6em;
-    transform: scale(0.7, 1) translateX(-20%);
     text-shadow: 0 0 0.52vw white, 0 0 1.04vw white, 0 0 30px #e60073;
-
+    
     padding-top: 0.5em;
-    width: 140%;
     user-select: none;
+    
+    position: absolute;
+    left: 0;
+    width: 140%;
+    top: 50%;
+    transform: scale(0.7, 1) translateX(-20%) translateY(-50%);
+
+    transition: all 0.3s;
 }
 
-div.card>h2+img {
-    margin-left: 2em;
+div.card.expanded>h2 {
+    top: 1em;
 }
 
 div.card>video {
@@ -242,6 +265,10 @@ div.card>video {
 
 div.card:hover>video {
     opacity: 100%;
+}
+
+div.card.selected>video {
+    opacity: 0%;
 }
 
 div.bg-canvas {
