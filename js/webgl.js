@@ -87,6 +87,7 @@ async function initShaders() {
     shaderProgram.timeUniform = gl.getUniformLocation(shaderProgram, "time");
     shaderProgram.mouseUniform = gl.getUniformLocation(shaderProgram, "mouse");
     shaderProgram.dimsUniform = gl.getUniformLocation(shaderProgram, "dims");
+    shaderProgram.orbitUniform = gl.getUniformLocation(shaderProgram, "orbit");
 }
 
 var quadVertexPositionBuffer;
@@ -147,6 +148,7 @@ function drawScene() {
     gl.uniform1f(shaderProgram.timeUniform, runningTime * 0.001);
     gl.uniform2f(shaderProgram.mouseUniform, mousex, mousey);
     gl.uniform2f(shaderProgram.dimsUniform, canvasBounds.width, canvasBounds.height);
+    gl.uniform1f(shaderProgram.orbitUniform, orbitOpacity);
     gl.drawElements(gl.TRIANGLES, quadVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 }
 
@@ -155,14 +157,14 @@ var startTime = 0;
 var runningTime = 0;
 
 function animate() {
-    frames += 1;
     var currentTime = new Date().getTime();
     runningTime = currentTime - startTime;
-    var elapsedTime = currentTime - lastTime;
-    if (elapsedTime >= 1000.0) {
-        frames = 0;
-        lastTime = currentTime;
-    }
+    
+    var elapsedTime = (currentTime - lastTime) * 0.001;
+    if(topbarScrolled) orbitOpacity = Math.max(0.0, orbitOpacity - elapsedTime);
+    else orbitOpacity = Math.min(1.0, orbitOpacity + elapsedTime);
+
+    lastTime = currentTime;
 }
 
 function resizeCanvas() {
@@ -204,3 +206,7 @@ async function webGLStart() {
 }
 
 webGLStart();
+
+var topbarScrolled = false;
+var orbitOpacity = 1.0;
+document.querySelectorAll('.topbar').forEach(topbar => topbar.addEventListener('transitionstart', evt => topbarScrolled = topbar.classList.contains('scrolled')));

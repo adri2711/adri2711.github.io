@@ -4,6 +4,7 @@ precision highp float;
 uniform float time;
 uniform vec2 mouse;
 uniform vec2 dims;
+uniform float orbit;
 
 varying vec2 texpos;
 
@@ -157,7 +158,7 @@ void planet(vec2 v) {
   // Orbit trajectory
   float ringmask = aastep(2.0, distance(dist, 750.0));
   float dashmask = aastep(0.4, distance(mod(theta * 100.0, 1.0), 0.0));
-  gl_FragColor.rgb += (1.0 - ringmask) * dashmask;
+  gl_FragColor.rgb += (1.0 - ringmask) * dashmask * orbit;
 
   // Moon
   float alpha = mod(time * 0.1, 1.0) - 0.2;
@@ -165,7 +166,7 @@ void planet(vec2 v) {
   vec2 moonorigin = orbitspace + vec2(750.0, 0.0);
   float moondist = length(moonorigin);
   float moonmask = aastep(40.0, moondist);
-  if(moonmask < 1.0) {
+  if(moonmask < 1.0 && orbit > 0.0) {
     vec2 moonspace = rotatevec2(moonorigin, -alpha);
     float moonnoise = (psrdfbmr(moonspace * 0.01, vec2(0.0), 0.0) + 2.0) / 3.0;
     moonnoise -= mod(moonnoise * 6.0, 1.0) / 6.0;
@@ -176,7 +177,7 @@ void planet(vec2 v) {
     float moonrim = aastep(35.0, moondist);
     moontexture = mix(moontexture, moonColor * 0.4, moonrim);
 
-    gl_FragColor.rgb = mix(moontexture, gl_FragColor.rgb, moonmask);
+    gl_FragColor.rgb = mix(moontexture, gl_FragColor.rgb, moonmask) *orbit;
   }
 }
 
