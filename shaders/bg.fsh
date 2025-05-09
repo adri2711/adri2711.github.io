@@ -164,7 +164,7 @@ void planet(vec2 v) {
   vec2 orbitspace = rotatevec2(centered, alpha);
   vec2 moonorigin = orbitspace + vec2(750.0, 0.0);
   float moondist = length(moonorigin);
-  float moonmask = aastep(50.0, moondist);
+  float moonmask = aastep(40.0, moondist);
   if(moonmask < 1.0) {
     vec2 moonspace = rotatevec2(moonorigin, -alpha);
     float moonnoise = (psrdfbmr(moonspace * 0.01, vec2(0.0), 0.0) + 2.0) / 3.0;
@@ -173,7 +173,7 @@ void planet(vec2 v) {
     moontexture -= mod(moontexture * 8.0, 1.0) / 8.0;
 
     // Moon border
-    float moonrim = aastep(45.0, moondist);
+    float moonrim = aastep(35.0, moondist);
     moontexture = mix(moontexture, moonColor * 0.4, moonrim);
 
     gl_FragColor.rgb = mix(moontexture, gl_FragColor.rgb, moonmask);
