@@ -4,13 +4,23 @@
 }
 
 :root {
-    --border-color: #f68a25;
-    --background-color: #001f4b;
-    --band-color: rgb(19, 57, 134);
+    --border-color: #491275;
+    --background-colorA: rgb(48, 10, 46);
+    --background-colorB: rgb(41, 7, 40);
+    --band-color: rgb(19, 111, 134);
     --text-color: white;
     --scroll-top-radius: 0.25em;
-    background: linear-gradient(rgb(41, 7, 40) 0%, rgb(37, 81, 106) 100%);
-    background-color: rgb(37, 81, 106);
+    /*background: linear-gradient(var(--background-colorB) 0%, var(--background-colorA) 100%);*/
+    /*background:
+      linear-gradient(135deg,#0000 18.75%,var(--background-colorA) 0 31.25%,#0000 0),
+      repeating-linear-gradient(45deg,var(--background-colorA) -6.25% 6.25%,rgb(41, 7, 40) 0 18.75%);*/
+    background: 
+      linear-gradient(135deg,#0000 20.5%,var(--background-colorB) 0 29.5%,#0000 0) 0 18px,
+      linear-gradient( 45deg,#0000 8%,var(--background-colorB) 0 17%, #0000 0 58%) 36px 0,
+      linear-gradient(135deg,#0000 8%,var(--background-colorB) 0 17%, #0000 0 58%,var(--background-colorB) 0 67%,#0000 0),        
+      linear-gradient( 45deg,#0000 8%,var(--background-colorB) 0 17%, #0000 0 58%,var(--background-colorB) 0 67%,#0000 0 83%,var(--background-colorB) 0 92%,#0000 0);
+    background-color: var(--background-colorA);
+    background-size: 72px 72px;
 
     padding-bottom: 20em; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
 }

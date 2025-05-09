@@ -7,20 +7,11 @@ uniform vec2 dims;
 
 varying vec2 texpos;
 
-vec3 hsv2rgb(vec3 c) {
-    const vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
-    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
-}
+#define PI 3.1415926535
 
-vec3 rgb2hsv(vec3 c) {
-    const vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
-    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
-
-    float d = q.x - min(q.w, q.y);
-    const float e = 1.0e-10;
-    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+vec2 rotatevec2(vec2 v, float a) {
+    float s = sin(a), c = cos(a);
+    return vec2(v.x * c - v.y * s, v.x * s + v.y * c);
 }
 
 // psrdnoise (c) Stefan Gustavson and Ian McEwan,
@@ -127,7 +118,8 @@ float pnoise(vec3 o) {
 }
 
 void stars(vec3 v) {
-  gl_FragColor +=  pow(pnoise(v * 150.0 + time / 12.0), 50.0);
+  float value = pow(pnoise(v * 150.0 + time / 12.0), 40.0);
+  gl_FragColor += aastep(0.6, value) * value;
 }
 
 void nebula(vec3 v) {
@@ -143,16 +135,49 @@ void nebula(vec3 v) {
 
 void planet(vec2 v) {
   const vec3 planetColor = vec3(0.15, 0.35, 0.32);
+  const vec3 moonColor = vec3(0.84, 0.08, 0.18);
 
-  float dist = length((v * vec2(dims)) - vec2(0.9, 0.0) * dims);
+  vec2 centered = (v * vec2(dims)) - vec2(0.9, 0.0) * dims;
+  float dist = length(centered);
+  float theta = atan(centered.y, centered.x) / (PI * 2.0);
   float value = aastep(500.0, dist);
   float valuerim = aastep(520.0, dist);
   gl_FragColor.rgb *= valuerim;
 
-  float noise = (psrdfbmr(v * 4.0, vec2(0.0), 0.0) + 2.0) / 3.0;
-  noise -= mod(noise * 6.0, 1.0) / 6.0;
-  gl_FragColor.rgb += (1.0 - value) * planetColor * noise;
+  // Planet surface
+  if(value < 1.0) {
+    float noise = (psrdfbmr(v * 4.0, vec2(0.0), 0.0) + 2.0) / 3.0;
+    noise -= mod(noise * 6.0, 1.0) / 6.0;
+    gl_FragColor.rgb += (1.0 - value) * planetColor * noise;
+  }
+
+  // Planet border
   gl_FragColor.rgb += (value - valuerim) * planetColor * 0.4;
+
+  // Orbit trajectory
+  float ringmask = aastep(2.0, distance(dist, 750.0));
+  float dashmask = aastep(0.4, distance(mod(theta * 100.0, 1.0), 0.0));
+  gl_FragColor.rgb += (1.0 - ringmask) * dashmask;
+
+  // Moon
+  float alpha = mod(time * 0.1, 1.0) - 0.2;
+  vec2 orbitspace = rotatevec2(centered, alpha);
+  vec2 moonorigin = orbitspace + vec2(750.0, 0.0);
+  float moondist = length(moonorigin);
+  float moonmask = aastep(50.0, moondist);
+  if(moonmask < 1.0) {
+    vec2 moonspace = rotatevec2(moonorigin, -alpha);
+    float moonnoise = (psrdfbmr(moonspace * 0.01, vec2(0.0), 0.0) + 2.0) / 3.0;
+    moonnoise -= mod(moonnoise * 6.0, 1.0) / 6.0;
+    vec3 moontexture = moonColor * moonnoise;
+    moontexture -= mod(moontexture * 8.0, 1.0) / 8.0;
+
+    // Moon border
+    float moonrim = aastep(45.0, moondist);
+    moontexture = mix(moontexture, moonColor * 0.4, moonrim);
+
+    gl_FragColor.rgb = mix(moontexture, gl_FragColor.rgb, moonmask);
+  }
 }
 
 void main(void) {
