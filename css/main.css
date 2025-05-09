@@ -199,6 +199,7 @@ div.card:hover {
 
 div.card.selected {
     width: calc(100% - 1.4em);
+    height: 50em;
 }
 
 div.blur {

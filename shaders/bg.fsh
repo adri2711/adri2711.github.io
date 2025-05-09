@@ -157,7 +157,7 @@ void planet(vec2 v) {
 
   // Orbit trajectory
   float ringmask = aastep(2.0, distance(dist, 750.0));
-  float dashmask = aastep(0.4, distance(mod(theta * 100.0, 1.0), 0.0));
+  float dashmask = aastep(0.4, distance(mod(theta * 100.0 - 0.3, 1.0), 0.0));
   gl_FragColor.rgb += (1.0 - ringmask) * dashmask * orbit;
 
   // Moon
@@ -168,7 +168,7 @@ void planet(vec2 v) {
   float moonmask = aastep(40.0, moondist);
   if(moonmask < 1.0 && orbit > 0.0) {
     vec2 moonspace = rotatevec2(moonorigin, -alpha);
-    float moonnoise = (psrdfbmr(moonspace * 0.01, vec2(0.0), 0.0) + 2.0) / 3.0;
+    float moonnoise = (psrdfbmr(moonspace * vec2(-0.01, 0.01), vec2(0.0), 0.0) + 2.0) / 3.0;
     moonnoise -= mod(moonnoise * 6.0, 1.0) / 6.0;
     vec3 moontexture = moonColor * moonnoise;
     moontexture -= mod(moontexture * 8.0, 1.0) / 8.0;
