@@ -65,6 +65,8 @@ div.topbar {
     border-color: var(--border-color);
     border-left: none;
     border-right: none;
+    
+    font-family: "Bai Jamjuree", sans-serif;
 }
 
 div.topbar.scrolled {
@@ -206,6 +208,8 @@ div.card.selected {
     background-position-y: 0;
     background-position-x: center;
     
+    cursor: default;
+
     transition: all 0.1s;
 }
 
@@ -269,6 +273,68 @@ div.card:hover>video {
 
 div.card.selected>video {
     opacity: 0%;
+}
+
+div.card-content {
+    display: none;
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 4em;
+
+    text-align: justify;
+    color: white;
+    font-size: large;
+    font-family: "Bai Jamjuree", sans-serif;
+
+    transition: opacity 0.8s;
+    opacity: 0%;
+}
+
+div.selected>div.card-content {
+    display: block;
+}
+
+div.expanded>div.card-content {
+    opacity: 100%;
+}
+
+div.card-content-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+div.card-content-row>p {
+    margin-bottom: 1em;
+    line-height: 1.5em;
+    width: 40%;
+    align-self: center;
+}
+
+div.card-content-row>img {
+    margin-bottom: 1em;
+    width: 40%;
+}
+
+div.card-content-row>p+img {
+    margin-left: 5%;
+}
+
+div.card-content-row>video {
+    margin-bottom: 1em;
+    width: 40%;
+}
+
+div.card-content-row>p+video {
+    margin-left: 5%;
+}
+
+div.card-content-row>img+img {
+    margin-left: 5%;
 }
 
 div.bg-canvas {
@@ -373,5 +439,39 @@ div.bg-canvas>canvas {
 
     div.contact-list {
         left: 65%;
+    }
+
+    div.card-content {
+        font-size: xx-large;
+        padding: 2em;
+    }
+
+    div.card-content-row {
+        display: block;
+    }
+
+    div.card-content-row>p {
+        width: 100%;
+    }
+
+    div.card-content-row>img {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    div.card-content-row>p+img {
+        margin-left: 0;
+    }
+
+    div.card-content-row>video {
+        width: 100%;
+    }
+
+    div.card-content-row>p+video {
+        margin-left: 0;
+    }
+
+    div.card-content-row>img+img {
+        margin-left: 0;
     }
 }

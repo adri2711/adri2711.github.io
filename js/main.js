@@ -27,6 +27,8 @@ function scrollLock(time) {
 
 function attachClickHandler() {
     document.querySelectorAll('div.card').forEach(card => card.addEventListener('mousedown', (evt) => {
+        if(card.classList.contains('selected')) return;
+
         const style = window.getComputedStyle(card);
         fontsize = parseFloat(style.fontSize);
         
