@@ -16,12 +16,12 @@ function mountSplide() {
 
 var lockOnto = null;
 var locking = false;
-var fontsize = 0;
+var topsize = 0;
 function scrollLock(time) {
     if(!locking) return;
 
     lenis.scrollTo(0, {immediate: true});
-    lenis.scrollTo(lenis.animatedScroll + lockOnto.getBoundingClientRect().top - 10 * fontsize, {immediate: true});
+    lenis.scrollTo(lenis.animatedScroll + lockOnto.getBoundingClientRect().top - topsize, {immediate: true});
 
     requestAnimationFrame(scrollLock);
 }
@@ -31,7 +31,7 @@ function attachClickHandler() {
         if(card.classList.contains('selected')) return;
 
         const style = window.getComputedStyle(card);
-        fontsize = parseFloat(style.fontSize);
+        topsize = (scrollTop ? 17 : 10) * parseFloat(style.fontSize);
         
         card.classList.add('selected');
         clearScrollTop();
