@@ -203,7 +203,7 @@ div.card:hover {
 
 div.card.selected {
     width: calc(100% - 1.4em);
-    height: 160em;
+    height: calc(var(--card-height) + 5em);
     background-size: auto 100%;
     background-position-y: 0;
     background-position-x: center;
@@ -278,10 +278,11 @@ div.card.selected>video {
 div.card-content {
     display: none;
     position: absolute;
-    top: 10%;
-    bottom: 0;
+    top: 6em;
+    bottom: auto;
     left: 0;
     right: 0;
+    min-width: calc(100vw - 12em);
 
     padding: 4em;
 
@@ -441,9 +442,14 @@ div.bg-canvas>canvas {
         left: 65%;
     }
 
+    div.card.selected {
+        height: calc(var(--card-height) + 5em);
+    }
+
     div.card-content {
         font-size: xx-large;
         padding: 2em;
+        top: 4em;
     }
 
     div.card-content-row {

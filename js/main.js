@@ -34,6 +34,12 @@ function attachClickHandler() {
         topsize = (scrollTop ? 17 : 10) * parseFloat(style.fontSize);
         
         card.classList.add('selected');
+        try {
+            card.style.setProperty('--card-height', card.querySelector('.card-content').getBoundingClientRect().height + 'px');
+        } catch (error) {
+            console.log("Card has no content, setting height to something reasonable");
+            card.style.setProperty('--card-height', 200 + 'px');
+        }
         clearScrollTop();
 
         lockOnto = card;
