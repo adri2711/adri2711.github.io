@@ -354,7 +354,7 @@ div.card-content-row>figure+figure {
 div.card>span.back {
     position: absolute;
     top: 1em;
-    left: 1em;
+    right: 1em;
 
     font-size: 3em;
     color: white;
@@ -535,7 +535,7 @@ div.bg-canvas>canvas {
 
     div.card>span.back {
         top: 0.5em;
-        left: 0.3em;
+        right: 0.3em;
 
         font-size: 6em;
     }
