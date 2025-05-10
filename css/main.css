@@ -4,10 +4,10 @@
 }
 
 :root {
-    --border-color: rgb(82, 0, 166);/*#491275;*/
+    --border-color: rgb(82, 0, 166);
     --background-colorA: rgb(48, 10, 46);
     --background-colorB: rgb(41, 7, 40);
-    --band-color: rgb(19, 111, 134);
+    --band-color: #001c27;
     --text-color: white;
     --scroll-top-radius: 0.25em;
     /*background: linear-gradient(var(--background-colorB) 0%, var(--background-colorA) 100%);*/
@@ -20,6 +20,8 @@
     background-size: 72px 72px;
 
     padding-bottom: 100vh; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
+
+    touch-action: manipulation;
 }
 
 img.svg {
@@ -204,6 +206,7 @@ div.card:hover {
 div.card.selected {
     width: calc(100% - 1.4em);
     height: calc(var(--card-height) + 5em);
+    margin: 1em;
     background-size: auto 100%;
     background-position-y: 0;
     background-position-x: center;
@@ -211,10 +214,6 @@ div.card.selected {
     cursor: default;
 
     transition: all 0.1s;
-}
-
-div.card.expanded {
-    margin: 1em;
 }
 
 div.blur {
@@ -352,6 +351,25 @@ div.card-content-row>figure+figure {
     margin-left: 5%;
 }
 
+div.card>span.back {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+
+    font-size: 3em;
+    color: white;
+    user-select: none;
+
+    opacity: 0%;
+}
+
+div.card.expanded>span.back {
+    opacity: 100%;
+    transition: opacity 0.5s;
+
+    cursor: pointer;
+}
+
 figure>img {
     width: 100%;
 }
@@ -472,6 +490,8 @@ div.bg-canvas>canvas {
 
     div.card.selected {
         height: calc(var(--card-height) + 5em);
+        width: calc(100% - 2em);
+        margin: 1em;
     }
 
     div.card-content {
@@ -511,5 +531,12 @@ div.bg-canvas>canvas {
 
     div.card-content-imgrow>figure+figure {
         margin-left: 0;
+    }
+
+    div.card>span.back {
+        top: 0.5em;
+        left: 0.3em;
+
+        font-size: 6em;
     }
 }
