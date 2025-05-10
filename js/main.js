@@ -26,6 +26,21 @@ function scrollLock(time) {
     requestAnimationFrame(scrollLock);
 }
 
+function resizeSelectedCard() {
+    try {
+        lockOnto.style.setProperty('--card-height', lockOnto.querySelector('.card-content').getBoundingClientRect().height + 'px');
+    } catch (error) {
+        console.log("Card has no content, setting height to something reasonable");
+        lockOnto.style.setProperty('--card-height', 200 + 'px');
+    }
+}
+
+function attachWindowResizeHandler() {
+    window.addEventListener('resize', evt => {
+        resizeSelectedCard();
+    });
+}
+
 function attachClickHandler() {
     document.querySelectorAll('div.card').forEach(card => card.addEventListener('mousedown', (evt) => {
         if(card.classList.contains('selected')) return;
@@ -33,17 +48,11 @@ function attachClickHandler() {
         const style = window.getComputedStyle(card);
         topsize = (scrollTop ? 17 : 10) * parseFloat(style.fontSize);
         
-        card.classList.add('selected');
-        try {
-            card.style.setProperty('--card-height', card.querySelector('.card-content').getBoundingClientRect().height + 'px');
-        } catch (error) {
-            console.log("Card has no content, setting height to something reasonable");
-            card.style.setProperty('--card-height', 200 + 'px');
-        }
-        clearScrollTop();
-
         lockOnto = card;
         locking = true;
+        card.classList.add('selected');
+        resizeSelectedCard();
+        clearScrollTop();
         requestAnimationFrame(scrollLock);
 
         setTimeout(() => card.classList.add('expanded'), 300);
@@ -90,6 +99,7 @@ function onLoadFinished() {
     attachResizeHandler();
     attachOpacityHandler();
     attachClickHandler();
+    attachWindowResizeHandler();
 }
 
 document.addEventListener('DOMContentLoaded', onLoadFinished);
