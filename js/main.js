@@ -20,6 +20,7 @@ var fontsize = 0;
 function scrollLock(time) {
     if(!locking) return;
 
+    lenis.scrollTo(0, {immediate: true});
     lenis.scrollTo(lenis.animatedScroll + lockOnto.getBoundingClientRect().top - 10 * fontsize, {immediate: true});
 
     requestAnimationFrame(scrollLock);
