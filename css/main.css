@@ -352,6 +352,25 @@ div.card-content-row>figure+figure {
     margin-left: 5%;
 }
 
+div.card>span.back {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+
+    font-size: 3em;
+    color: white;
+    user-select: none;
+
+    opacity: 0%;
+}
+
+div.card.expanded>span.back {
+    opacity: 100%;
+    transition: opacity 0.5s;
+
+    cursor: pointer;
+}
+
 figure>img {
     width: 100%;
 }

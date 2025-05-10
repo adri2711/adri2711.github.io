@@ -41,9 +41,10 @@ function attachWindowResizeHandler() {
     });
 }
 
+var exiting = false;
 function attachClickHandler() {
     document.querySelectorAll('div.card').forEach(card => card.addEventListener('mousedown', (evt) => {
-        if(card.classList.contains('selected')) return;
+        if(exiting || card.classList.contains('selected')) return;
 
         const style = window.getComputedStyle(card);
         topsize = (scrollTop ? 17 : 10) * parseFloat(style.fontSize);
@@ -62,6 +63,12 @@ function attachClickHandler() {
         }, 500);
 
         setTimeout(() => locking = false, 600);
+    }));
+
+    document.querySelectorAll('span.back').forEach(back => back.addEventListener('mousedown', (evt) => {
+        exiting = true;
+        Array.from(document.querySelectorAll('div.card.selected')).forEach(other => other.classList.remove('selected', 'expanded'));
+        setTimeout(() => exiting = false, 10);
     }));
 }
 
