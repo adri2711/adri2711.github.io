@@ -306,13 +306,13 @@ div.expanded>div.card-content {
 div.card-content-imgrow {
     display: flex;
     justify-content: center;
-    margin-bottom: 1em;
     margin-left: 7.5%;
     margin-right: 7.5%;
 }
 
 div.card-content-imgrow>figure {
     width: calc(33.33%);
+    margin-bottom: 1em;
 }
 
 div.card-content-imgrow>figure+figure {
@@ -484,6 +484,10 @@ div.bg-canvas>canvas {
         display: block;
     }
 
+    div.card-content-imgrow {
+        display: block;
+    }
+
     div.card-content-row>p {
         width: 100%;
     }
@@ -492,12 +496,20 @@ div.bg-canvas>canvas {
         width: 100%;
         margin-bottom: 2em;
     }
-
+    
     div.card-content-row>p+figure {
         margin-left: 0;
     }
-
+    
     div.card-content-row>figure+figure {
+        margin-left: 0;
+    }
+
+    div.card-content-imgrow>figure {
+        width: 100%;
+    }
+
+    div.card-content-imgrow>figure+figure {
         margin-left: 0;
     }
 }
