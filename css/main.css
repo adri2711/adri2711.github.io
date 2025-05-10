@@ -303,10 +303,33 @@ div.expanded>div.card-content {
     opacity: 100%;
 }
 
+div.card-content-imgrow {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+}
+
+div.card-content-imgrow>figure {
+    width: calc(33.33%);
+}
+
+div.card-content-imgrow>figure+figure {
+    margin-left: 1em;
+}
+
 div.card-content-row {
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+div.card-content>p {
+    margin-bottom: 1em;
+    line-height: 1.5em;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
 }
 
 div.card-content-row>p {
@@ -316,26 +339,31 @@ div.card-content-row>p {
     align-self: center;
 }
 
-div.card-content-row>img {
+div.card-content-row>figure {
     margin-bottom: 1em;
     width: 40%;
 }
 
-div.card-content-row>p+img {
+div.card-content-row>p+figure {
     margin-left: 5%;
 }
 
-div.card-content-row>video {
-    margin-bottom: 1em;
-    width: 40%;
-}
-
-div.card-content-row>p+video {
+div.card-content-row>figure+figure {
     margin-left: 5%;
 }
 
-div.card-content-row>img+img {
-    margin-left: 5%;
+figure>img {
+    width: 100%;
+}
+
+figure>video {
+    width: 100%;
+}
+
+figcaption {
+    width: 100%;
+    text-align: center;
+    color: lightskyblue;
 }
 
 div.bg-canvas {
@@ -460,24 +488,16 @@ div.bg-canvas>canvas {
         width: 100%;
     }
 
-    div.card-content-row>img {
+    div.card-content-row>figure {
         width: 100%;
         margin-bottom: 2em;
     }
 
-    div.card-content-row>p+img {
+    div.card-content-row>p+figure {
         margin-left: 0;
     }
 
-    div.card-content-row>video {
-        width: 100%;
-    }
-
-    div.card-content-row>p+video {
-        margin-left: 0;
-    }
-
-    div.card-content-row>img+img {
+    div.card-content-row>figure+figure {
         margin-left: 0;
     }
 }
