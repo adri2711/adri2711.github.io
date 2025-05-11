@@ -22,6 +22,8 @@
     padding-bottom: 100vh; /* Web development is truly incomprehensible. This prevents the gradient top from cutting into the bottom ???? */
 
     touch-action: manipulation;
+
+    background: url("/images/bg.png");
 }
 
 img.svg {
@@ -506,6 +508,13 @@ div.bg-canvas>canvas {
 
     div.card-content-imgrow {
         display: block;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    div.card-content>p {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     div.card-content-row>p {
