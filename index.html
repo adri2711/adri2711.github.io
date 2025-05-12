@@ -158,7 +158,7 @@
                     <div class="card-content">
                         <div class="card-content-row">
                             <p>
-                                Canonical Body is a a 2D mystery narrative adventure inspired by TypeRacer and TempleOS. I was tasked with game design, programming and implementation in Unity, as well as coordinating several playtests. As a university project, we were given a rigid set of guidelines and instructed to contain the project within specific genres and formats. However, my teammates and I had the clear goal to come up with unique mechanics and a fleshed-out narrative. We sought to take advantage of our unique strengths while keeping a manageable scope for a 6-month project.
+                                Canonical Body is a a 2D mystery narrative adventure inspired by TypeRacer and TempleOS. I was tasked with game design, programming and implementation in Unity, as well as coordinating several playtests. As a university project, we were given a rigid set of guidelines and instructed to contain the project within a certain format. However, my teammates and I had the clear goal to come up with unique mechanics and a fleshed-out narrative. We sought to take advantage of our unique strengths while keeping a manageable scope for a 6-month project.
                             </p>
                             <figure>
                                 <img src="images/canonical/typing.png">
@@ -174,7 +174,7 @@
                         </div>
                         <div class="card-content-row">
                             <p>
-                                In order to convey a certain sense of physicality, we introduced mechanics such as keys popping off as the player types, needing to be dragged back before they can be used again. We decided to use dragging as a consistent UX pattern for most game elements, including obstacles, puzzle pieces, and user interfaces the player can change the layout of. We also chose to subvert the player's expectations with certain interactions, such as the in-game keycaps' positions dictating input characters, instead of the player's actual keyboard. One of the three possible endings also involves accessing the game files in order to interact with the in-game photo gallery's system.
+                                In order to convey a sense of physicality, we introduced mechanics such as keys popping off as the player types, needing to be dragged back before they can be used again. We decided to use dragging as a consistent UX pattern for most game elements, including obstacles, puzzle pieces, and user interfaces the player can change the layout of. We also chose to subvert the player's expectations with certain interactions, such as the in-game keycaps' positions dictating input characters, instead of the player's actual keyboard. One of the three possible endings also involves accessing the game files in order to interact with the in-game photo gallery's system.
                             </p>
                             <figure>
                                 <img src="images/canonical/pics.png">
@@ -220,12 +220,14 @@
                                 I focused on building a flexible character controller that could be comfortably and quickly iterated upon. With it, I implemented and tested numerous movement tools, finally landing on a double jump, dash, and hookshot. The latter two double as combat abilities. By making use of interfaces, I kept the player code readable and easy to tweak, and ensured movement logic transitioned cleanly between states. Responsiveness was extremely important, with abilities having a satisfying feedback and impact. To this end, I implemented multiple elements such as hitstop and screen shake, as well as the ability to apply forces to the player.
                             </p>
                             <figure>
-                                <img src="images/pounce/pov_pit.png">
+                                <video muted loop autoplay>
+                                    <source src="videos/pounce.mp4" type="video/mp4">
+                                </video>
                             </figure>
                         </div>
                         <div class="card-content-row">
                             <p>
-                                In addition to testing the player's movement skills and supporting combat encounters, one of the main goals of the level is to sell the atmosphere and theme. I worked closely with the artists in our team to incorporate their environmental storytelling goals into the level and ensure my layouts and sightlines supported them. I also established our method for base asset placement and implemented several graphics features following our artistic guidelines, for which I used Shader Graph and HLSL. These include a highly configurable ambient fog, various damage and magic effects, as well as custom shaders for enemy, player, and decal rendering.
+                                In addition to testing the player's movement skills and supporting combat encounters, one of the main goals of the level is to sell the atmosphere and theme. I worked closely with the artists in our team to incorporate their environmental storytelling goals into the level and ensure my layouts and sightlines supported them. I also established a method for asset placement and implemented several graphics features following our artistic guidelines, for which I used Shader Graph and HLSL. These include a highly configurable ambient fog, various damage and magic effects, as well as custom shaders for enemy, player, and decal rendering.
                             </p>
                             <figure>
                                 <img src="images/pounce/pov_mural.png">
@@ -252,10 +254,18 @@
                         </div>
                         <div class="card-content-row">
                             <p>
-                                My main focus with the level was to make it easy to learn for players with less experience moving through such environments. Floors are bright, changing color across height levels in order to boost readability. This is especially important given the map's high vertical density, which gives players the chance to use their many movement options. In order to help players distinguish where they are in the symmetrical layout of the arena, I gave each section a distinct theme and made sure most locations had sightlines to prominent landmarks. I also aimed to avoid clutter and reduce visual noise by placing decorative elements on walls or next to edges, giving enough room for players to move and fight in. The game also makes use of Minecraft's built-in sandbox elements, which meant I deliberately avoided using objects that obstructed block placing in the scene.
+                                My main focus with the level was to make it easy to learn for players with less experience moving through such environments. Floors are bright, changing color across height levels in order to boost readability. This is especially important given the map's high vertical density, which gives players the chance to use their many movement options.
                             </p>
                             <figure>
                                 <img src="images/primatica/spot.png">
+                            </figure>
+                        </div>
+                        <div class="card-content-row">
+                            <p>
+                                In order to help players distinguish where they are in the symmetrical layout of the arena, I gave each section a distinct theme and made sure most locations had sightlines to prominent landmarks. I also aimed to avoid clutter and reduce visual noise by placing decorative elements on walls or next to edges, giving enough room for players to move and fight in. The game also makes use of Minecraft's built-in sandbox elements, which meant I deliberately avoided using objects that obstructed block placing in the scene.
+                            </p>
+                            <figure>
+                                <img src="images/primatica/top.jpg">
                             </figure>
                         </div>
                         <div class="card-content-row">
@@ -495,7 +505,7 @@
                     <div class="card-content">
                         <div class="card-content-row">
                             <p>
-                                Jungle Breeze is a PvP first person action game following the popular Minecraft "Capture The Wool" format. I handled all aspects of design and implementation and organized multiple playtest sessions to gather feedback and iterate. Players are split into two teams, and their goal is to capture two "wool" items from the opponent's base, and bring it back to theirs.
+                                Jungle Breeze is a PvP first person action game following the popular Minecraft "Capture The Wool" format. I handled all aspects of design and implementation, and organized multiple playtest sessions to gather feedback and iterate. Players are split into two teams, and their goal is to capture two "wool" items from the opponent's base, and bring it back to theirs.
                             </p>
                             <figure>
                                 <img src="images/ctw/forward_from_base.png">
@@ -503,7 +513,7 @@
                         </div>
                         <div class="card-content-row">
                             <p>
-                                This format is very well established in the Minecraft PvP community, with well over 10 years of history. My goal was to pay hommage to the genre's roots, while creating a modern and minimal take on it. The design is firmly rooted in base Minecraft mechanics and its sandbox elements, with my primary focus being on flow, balance and strategic diversity.
+                                This format is very well established in the Minecraft PvP community, with well over 10 years of history. My goal was to pay hommage to the genre's roots, while creating a modern and minimal take on it. The design is firmly rooted in base Minecraft mechanics and its sandbox elements, with my primary focus being on flow, balance, and strategic diversity.
                             </p>
                             <figure>
                                 <img src="images/ctw/top.png">
@@ -511,7 +521,7 @@
                         </div>
                         <div class="card-content-row">
                             <p>
-                                I followed a methodical approach to designing the map, first sketching a layout, then iterating and refining the blockout as much as possible, and finally adding detail layers. Metrics are finely tuned to the specifics of Minecraft movement, and also accounting for mechanics such as wind charges, TNT cannons and the mace.
+                                I followed a methodical approach to designing the map, first sketching a layout, then iterating and refining the blockout as much as possible, and finally adding detail layers. Metrics are finely tuned to the specifics of Minecraft movement, and also account for mechanics such as wind charges, TNT cannons and the mace.
                             </p>
                             <figure>
                                 <img src="images/ctw/diagram.jpg">
@@ -619,7 +629,7 @@
                     <div class="card-content">
                         <div class="card-content-row">
                             <p>
-                                Divinity's End is a first person action-RPG and final entry of the Pantheon map trilogy. Joining the team months into its development, I took on various roles as project lead, level designer, and programmer, coordinating an international team of 25 people. I was also involved in coordinating the quality assurance process and consequent iteration.
+                                Divinity's End is a first person action-RPG and final entry of the Pantheon map trilogy. Joining the team well into its development, I took on various roles as project lead, level designer, and programmer, coordinating an international team of 25 people. I was also involved in coordinating the quality assurance process and consequent iteration.
                             </p>
                             <figure>
                                 <img src="images/DE/a1_end.png">
@@ -627,7 +637,7 @@
                         </div>
                         <div class="card-content-row">
                             <p>
-                                Initially brought in for a level design task, I ended up taking over project management alongside three existing members. At this point, the project had dragged on for several years, and although massive amounts of content had been made, it was very disconnected and in various states of completion. We brought in other creators and in the end, managed to complete the project and ship it less than a year after I joined. Its release was highly anticipated by the community, ending up a landmark release that is still discussed more than 4 years later, and amassing over 45,000 total downloads.
+                                Initially brought in for a level design task, I ended up taking over project management alongside three existing members. At this point, the project had dragged on for several years, and although massive amounts of content had been made, it was very disconnected and in various states of completion. We brought in other creators and in the end, managed to complete the project and ship it less than a year after I joined. It was highly anticipated by the community and had a very positive reception, amassing over 45,000 total downloads.
                                 <br><br>
                                 <a href="https://www.crowdford.com/maps/divinitys_end/">Divinity's End project page</a>
                             </p>
